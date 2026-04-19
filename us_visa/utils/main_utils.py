@@ -139,7 +139,7 @@ def drop_columns(df:DataFrame, columns:list)->DataFrame:
         DataFrame: A new DataFrame with the specified columns dropped.
     """
     try:
-        df=df.drop(columns=cols,axis=1)
+        df=df.drop(columns=columns,axis=1)
         logging.info("Existed the drop_columns method of utils" )
         return df
     except Exception as e:

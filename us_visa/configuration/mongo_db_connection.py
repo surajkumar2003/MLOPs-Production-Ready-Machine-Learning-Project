@@ -3,6 +3,9 @@ import sys
 from us_visa.exception import USVisaException
 from us_visa.logger import logging
 
+from dotenv import load_dotenv
+load_dotenv()
+
 import os
 from us_visa.constants import DATABASE_NAME, MONGODB_URL_KEY
 import pymongo

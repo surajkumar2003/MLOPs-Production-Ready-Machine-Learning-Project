@@ -1,11 +1,4 @@
-from us_visa.logger import logging
-# logging.info("This is a info message")
+from us_visa.pipeline.training_pipeline import TrainingPipeline
 
-from us_visa.exception import UsVisaException
-import sys
-
-try:
-    a=2/0
-
-except Exception as e:
-    raise UsVisaException(e,sys)    
+obj=TrainingPipeline()
+obj.run_pipeline()

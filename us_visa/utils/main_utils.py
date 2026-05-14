@@ -6,7 +6,7 @@ import dill
 import yaml
 from pandas import DataFrame
 
-from us_visa.exception import UsVisaException
+from us_visa.exception import USVisaException
 from us_visa.logger import logging
 
 def read_yaml_file(file_path:str)->dict:
@@ -24,7 +24,7 @@ def read_yaml_file(file_path:str)->dict:
             return yaml.safe_load(yaml_file)
         
     except Exception as e:
-        raise UsVisaException(e,sys) from e    
+        raise USVisaException(e,sys) from e    
     
 def write_yaml_file(file_path:str,content:object, replace:bool=False)->None:
     """
@@ -36,7 +36,7 @@ def write_yaml_file(file_path:str,content:object, replace:bool=False)->None:
         replace (bool, optional): Whether to replace the existing file. Defaults to False.
 
     Raises:
-        UsVisaException: If an error occurs while writing to the YAML file.
+        USVisaException: If an error occurs while writing to the YAML file.
     """
     try:
         if replace:
@@ -48,7 +48,7 @@ def write_yaml_file(file_path:str,content:object, replace:bool=False)->None:
             yaml.dump(content, file)    
 
     except Exception as e:
-        raise UsVisaException(e,sys) from e
+        raise USVisaException(e,sys) from e
 
 def load_object(file_path:str)->object:
     """
@@ -70,7 +70,7 @@ def load_object(file_path:str)->object:
         logging.info("Exited the load_object method of utils")
         return obj       
     except Exception as e:
-        raise UsVisaException(e,sys) from e
+        raise USVisaException(e,sys) from e
 
 def save_numpy_array_data(file_path:str, array:np.array):
     """
@@ -81,7 +81,7 @@ def save_numpy_array_data(file_path:str, array:np.array):
         array (np.ndarray): The NumPy array to be saved.
 
     Raises:
-        UsVisaException: If an error occurs while saving the array.
+        USVisaException: If an error occurs while saving the array.
     """
     try:
         dir_path = os.path.dirname(file_path)
@@ -89,7 +89,7 @@ def save_numpy_array_data(file_path:str, array:np.array):
         with open(file_path, 'wb') as file_obj:
             np.save(file_obj, array)
     except Exception as e:
-        raise UsVisaException(e, sys) from e
+        raise USVisaException(e, sys) from e
 
 def load_numpy_array_data(file_path:str)->np.array:
     """
@@ -104,7 +104,7 @@ def load_numpy_array_data(file_path:str)->np.array:
         with open(file_path, 'rb') as file_obj:
             return np.load(file_obj)
     except Exception as e:
-        raise UsVisaException(e, sys) from e
+        raise USVisaException(e, sys) from e
     
 def save_object(file_path:str, obj:object)->None:
     """
@@ -115,7 +115,7 @@ def save_object(file_path:str, obj:object)->None:
         obj (object): The object to be saved.
 
     Raises:
-        UsVisaException: If an error occurs while saving the object.
+        USVisaException: If an error occurs while saving the object.
     """
     logging.info("Entered the save_object method of utils")
 
@@ -125,7 +125,7 @@ def save_object(file_path:str, obj:object)->None:
             dill.dump(obj, file_obj)
         logging.info("Exited the save_object method of utils")    
     except Exception as e:
-        raise UsVisaException(e,sys) from e    
+        raise USVisaException(e,sys) from e    
     
 def drop_columns(df:DataFrame, columns:list)->DataFrame:
     """
@@ -143,4 +143,4 @@ def drop_columns(df:DataFrame, columns:list)->DataFrame:
         logging.info("Existed the drop_columns method of utils" )
         return df
     except Exception as e:
-        raise UsVisaException(e,sys) from e
+        raise USVisaException(e,sys) from e
